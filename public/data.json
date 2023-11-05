@@ -1,0 +1,123 @@
+[
+    {
+      "foodImage": "https://i.ibb.co/pZ7pdV6/food-1.jpg",
+      "foodName": "Freshly Baked Bread",
+      "donator": {
+        "image": "https://i.ibb.co/FJ0cfBj/person-1.jpg",
+        "name": "Alice Smith"
+      },
+      "foodQuantity": 20,
+      "pickupLocation": "123 Main Street, Cityville",
+      "expiredDateTime": "2023-12-15T14:00:00",
+      "additionalNotes": "Gluten-free, no preservatives"
+    },
+    {
+      "foodImage": "https://i.ibb.co/ZXtSQGt/food-2.jpg",
+      "foodName": "Vegetable Soup",
+      "donator": {
+        "image": "https://i.ibb.co/hC1Tbrx/person-2.jpg",
+        "name": "Bob Johnson"
+      },
+      "foodQuantity": 10,
+      "pickupLocation": "456 Elm Street, Townsville",
+      "expiredDateTime": "2023-12-16T12:30:00",
+      "additionalNotes": "Contains no nuts"
+    },
+    {
+      "foodImage": "https://i.ibb.co/FqpnCsz/food-3.jpg",
+      "foodName": "Fruit Salad",
+      "donator": {
+        "image": "https://i.ibb.co/c6bP5hh/person-3.jpg",
+        "name": "Eva Wilson"
+      },
+      "foodQuantity": 15,
+      "pickupLocation": "789 Oak Avenue, Villagetown",
+      "expiredDateTime": "2023-12-14T16:45:00",
+      "additionalNotes": "Freshly cut and packed"
+    },
+    {
+      "foodImage": "https://i.ibb.co/600ZLHh/food-4.jpg",
+      "foodName": "Spaghetti Bolognese",
+      "donator": {
+        "image": "https://i.ibb.co/mqh5Trx/person-4.jpg",
+        "name": "David Brown"
+      },
+      "foodQuantity": 12,
+      "pickupLocation": "101 Pine Road, Hamletsville",
+      "expiredDateTime": "2023-12-17T18:00:00",
+      "additionalNotes": "Contains beef and tomatoes"
+    },
+    {
+      "foodImage": "https://i.ibb.co/bvVMd89/food-5.jpg",
+      "foodName": "Chicken Curry",
+      "donator": {
+        "image": "https://i.ibb.co/NnrNgpd/person-5.jpg",
+        "name": "Grace Lee"
+      },
+      "foodQuantity": 8,
+      "pickupLocation": "202 Cedar Lane, Riverside",
+      "expiredDateTime": "2023-12-14T20:15:00",
+      "additionalNotes": "Mild spice level"
+    },
+    {
+      "foodImage": "https://i.ibb.co/5T1Yk8h/food-6.jpg",
+      "foodName": "Homemade Pizza",
+      "donator": {
+        "image": "https://i.ibb.co/KhQvgSJ/person-6.jpg",
+        "name": "John Davis"
+      },
+      "foodQuantity": 16,
+      "pickupLocation": "303 Maple Court, Suburbia",
+      "expiredDateTime": "2023-12-15T17:30:00",
+      "additionalNotes": "Variety of toppings"
+    },
+    {
+      "foodImage": "https://i.ibb.co/ZfJWzb0/food-7.jpg",
+      "foodName": "Rice and Beans",
+      "donator": {
+        "image": "https://i.ibb.co/XxBKwY2/person-7.jpg",
+        "name": "Sophia Miller"
+      },
+      "foodQuantity": 25,
+      "pickupLocation": "404 Willow Street, Uptown",
+      "expiredDateTime": "2023-12-16T13:00:00",
+      "additionalNotes": "Vegan-friendly"
+    },
+    {
+      "foodImage": "https://i.ibb.co/dLCMdjX/food-8.jpg",
+      "foodName": "Oatmeal Cookies",
+      "donator": {
+        "image": "https://i.ibb.co/HCcDmhb/person-8.jpg",
+        "name": "Daniel Wilson"
+      },
+      "foodQuantity": 30,
+      "pickupLocation": "505 Birch Avenue, Downtown",
+      "expiredDateTime": "2023-12-15T15:45:00",
+      "additionalNotes": "Homemade, no nuts"
+    },
+    {
+      "foodImage": "https://i.ibb.co/RC5m98r/food-9.jpg",
+      "foodName": "Sushi Rolls",
+      "donator": {
+        "image": "https://i.ibb.co/Sv9rwW4/person-9.jpg",
+        "name": "Olivia Anderson"
+      },
+      "foodQuantity": 14,
+      "pickupLocation": "606 Redwood Drive, Midtown",
+      "expiredDateTime": "2023-12-14T21:00:00",
+      "additionalNotes": "Assorted sushi types"
+    },
+    {
+      "foodImage": "https://i.ibb.co/Wgh9RBg/food-10.jpg",
+      "foodName": "Cheese and Crackers",
+      "donator": {
+        "image": "https://i.ibb.co/h19MYD4/person-10.jpg",
+        "name": "Liam Robinson"
+      },
+      "foodQuantity": 18,
+      "pickupLocation": "707 Fir Lane, West End",
+      "expiredDateTime": "2023-12-17T19:30:00",
+      "additionalNotes": "Variety of cheeses"
+    }
+  ]
+  

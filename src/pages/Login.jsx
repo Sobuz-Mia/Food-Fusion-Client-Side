@@ -1,12 +1,14 @@
-import { Link, useNavigate} from 'react-router-dom';
+import { Link, useLocation, useNavigate} from 'react-router-dom';
 import userLogo from '../assets/images/userLogin.jpg'
 import useAuth from '../hooks/useAuth';
 import { BiLogoFacebookCircle } from "react-icons/bi";
 import { BiLogoLinkedin } from "react-icons/bi";
 import { FcGoogle } from "react-icons/fc";
 import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 const Login = () => {
     const {loggedInUser} = useAuth();
+    const location = useLocation();
     const navigate = useNavigate();
     const handleCreateUser = (e) =>{
         e.preventDefault()
@@ -14,11 +16,21 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         loggedInUser(email,password)
-        .then(()=>{
+        .then((result)=>{
+           if(result.user){
             toast.success('user logIn Successfully')
-            navigate('/')
+            navigate(location?.state ? location.state : "/");
+           }
         })
-        .catch(error=>console.log(error))
+        .catch(error=>{
+          if (error) {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...Sorry",
+              text: "Invalid email / password!",
+            });
+          }
+        })
     }
   return (
     <div className="hero min-h-screen bg-base-200 my-3 rounded-md">

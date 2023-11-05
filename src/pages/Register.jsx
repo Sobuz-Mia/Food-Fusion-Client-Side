@@ -4,6 +4,7 @@ import useAuth from "../hooks/useAuth";
 import { BiLogoFacebookCircle } from "react-icons/bi";
 import { BiLogoLinkedin } from "react-icons/bi";
 import { FcGoogle } from "react-icons/fc";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser,updateUser } = useAuth();
@@ -18,9 +19,24 @@ const Register = () => {
     createUser(email,password)
     .then(result=>{
         console.log(result.user)
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your account create successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         updateUser(name,photoUrl)
         .then(()=>{
             navigate('/');
+        })
+        .catch((err)=>{
+          if(err){
+            Swal.fire({
+              icon: "error",
+              text: "Already exist email/ something wrong",
+            });
+          }
         })
     })
   };
