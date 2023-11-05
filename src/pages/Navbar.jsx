@@ -1,14 +1,16 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate} from "react-router-dom";
 import defaultUser from '../assets/images/defaultUser.jpg'
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 const Navbar = () => {
     const {user,loggedOut} = useAuth();
+    const navigate = useNavigate()
     console.log(user)
     const handleLogOut = () =>{
         loggedOut()
         .then(()=>{
             toast.success('Log out Successfully!')
+            navigate('/')
         })
     }
   const navLink = (
@@ -70,10 +72,8 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLink}</ul>
       </div>
       <div className="navbar-end">
-        {user?<div className="dropdown dropdown-end flex items-center gap-5">
-            <div>
-                <p className="text-xl font-thin">{user? user.displayName : ''}</p>
-            </div>
+        {user?<div className="dropdown dropdown-end">
+            
           <div>
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-20 rounded-full">
@@ -84,6 +84,7 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
+             <p className="text-xl font-thin text-center">{user? user.displayName : ''}</p>
             <li>
               <a className="justify-between">
                 Profile

@@ -1,20 +1,24 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import userLogo from '../assets/images/userLogin.jpg'
 import useAuth from '../hooks/useAuth';
 import { BiLogoFacebookCircle } from "react-icons/bi";
 import { BiLogoLinkedin } from "react-icons/bi";
 import { FcGoogle } from "react-icons/fc";
+import toast from 'react-hot-toast';
 const Login = () => {
-    const {createUser} = useAuth();
+    const {loggedInUser} = useAuth();
+    const navigate = useNavigate();
     const handleCreateUser = (e) =>{
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        createUser(email,password)
-        .then(user=>console.log(user.user))
+        loggedInUser(email,password)
+        .then(()=>{
+            toast.success('user logIn Successfully')
+            navigate('/')
+        })
         .catch(error=>console.log(error))
-        console.log(email,password);
     }
   return (
     <div className="hero min-h-screen bg-base-200 my-3 rounded-md">
