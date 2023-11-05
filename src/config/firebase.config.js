@@ -1,14 +1,16 @@
-
+import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAR6f6o3AoEif75s9GW06XktpoRR2tY78M",
-  authDomain: "community-food-sharing-93a74.firebaseapp.com",
-  projectId: "community-food-sharing-93a74",
-  storageBucket: "community-food-sharing-93a74.appspot.com",
-  messagingSenderId: "846836662705",
-  appId: "1:846836662705:web:d2cac7d28b2607b51bfd90"
+  apiKey:import.meta.env.VITE_apiKey,
+  authDomain:import.meta.env.VITE_authDomain, 
+  projectId:import.meta.env.VITE_projectId ,
+  storageBucket:import.meta.env.VITE_storageBucket,
+  messagingSenderId:import.meta.env.VITE_messagingSenderId, 
+  appId:import.meta.env.VITE_appId
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+export default auth;

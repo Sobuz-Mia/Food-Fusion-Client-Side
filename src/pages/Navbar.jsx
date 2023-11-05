@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import defaultUser from '../assets/images/defaultUser.jpg'
 import useAuth from "../hooks/useAuth";
 const Navbar = () => {
     const {user} = useAuth();
+    console.log(user)
   const navLink = (
     <>
       <li>
@@ -62,10 +63,14 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLink}</ul>
       </div>
       <div className="navbar-end">
-        <div className="dropdown dropdown-end">
+        {user?<div className="dropdown dropdown-end flex items-center gap-5">
+            <div>
+                <p>{user? user.displayName : ''}</p>
+            </div>
+          <div>
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-20 rounded-full">
-              <img src={defaultUser} />
+              <img src={user?user?.photoURL :defaultUser } />
             </div>
           </label>
           <ul
@@ -85,7 +90,10 @@ const Navbar = () => {
               <button>Logout</button>
             </li>
           </ul>
-        </div>
+          </div>
+        </div>:
+        <Link to={'/login'} className="btn btn-outline primary-color normal-case text-xl">Login</Link>
+        }
       </div>
     </div>
   );
