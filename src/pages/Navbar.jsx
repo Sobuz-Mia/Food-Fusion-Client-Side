@@ -1,9 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
 import defaultUser from '../assets/images/defaultUser.jpg'
 import useAuth from "../hooks/useAuth";
+import toast from "react-hot-toast";
 const Navbar = () => {
-    const {user} = useAuth();
+    const {user,loggedOut} = useAuth();
     console.log(user)
+    const handleLogOut = () =>{
+        loggedOut()
+        .then(()=>{
+            toast.success('Log out Successfully!')
+        })
+    }
   const navLink = (
     <>
       <li>
@@ -65,7 +72,7 @@ const Navbar = () => {
       <div className="navbar-end">
         {user?<div className="dropdown dropdown-end flex items-center gap-5">
             <div>
-                <p>{user? user.displayName : ''}</p>
+                <p className="text-xl font-thin">{user? user.displayName : ''}</p>
             </div>
           <div>
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -87,7 +94,7 @@ const Navbar = () => {
               <a>Settings</a>
             </li>
             <li>
-              <button>Logout</button>
+              <button onClick={handleLogOut}>Logout</button>
             </li>
           </ul>
           </div>

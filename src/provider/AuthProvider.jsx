@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import auth from './../config/firebase.config';
-import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 
 export const AuthContext = createContext();
 
@@ -24,12 +24,16 @@ const AuthProvider = ({children}) => {
             photoURL:photo
         })
     }
+    const loggedOut = () =>{
+        return signOut(auth)
+    }
     const authInfo = {
         user,
         isLoading,
         createUser,
         loggedInUser,
-        updateUser
+        updateUser,
+        loggedOut
     }
     useEffect(()=>{
         const subsCribe = onAuthStateChanged(auth,currentUser=>{
