@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 const Navbar = () => {
     const {user,loggedOut} = useAuth();
     const navigate = useNavigate()
-    console.log(user)
     const handleLogOut = () =>{
         loggedOut()
         .then(()=>{
@@ -15,25 +14,25 @@ const Navbar = () => {
     }
   const navLink = (
     <>
-      <li>
+      <li className="navLink">
         <NavLink
           to={"/"}
-          className={(isActive) => (isActive ? "bg-primary" : "")}
         >
           Home
         </NavLink>
+
       </li>
       <li>
-        <NavLink to={"/available-food"}>Available Foods</NavLink>
+        <NavLink to={"/available-foods"} >Available Foods</NavLink>
       </li>
       <li>
-        <NavLink to={"/add-food"}>Add Food</NavLink>
+        <NavLink to={"/add-Food"}>Add Food</NavLink>
       </li>
       <li>
-        <NavLink to={"/manage-food"}>Manage Foods</NavLink>
+        <NavLink to={"/manage-food"} >Manage Foods</NavLink>
       </li>
       <li>
-        <NavLink to={"/food-request"}>Food Request</NavLink>
+        <NavLink to={"/food-request"} >Food Request</NavLink>
       </li>
     </>
   );
