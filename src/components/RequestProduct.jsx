@@ -1,78 +1,114 @@
+import PropTypes from "prop-types";
+import useAxios from "../hooks/useAxios";
+import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+const RequestProduct = ({ food }) => {
+  const navigate = useNavigate();
+  const axios = useAxios();
+  const {user} = useAuth();
+  const handleRequestFood = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const additionalNotes = form.notes.value;
+    const donation = form.donate.value;
+    const requestFood = {
+      foodName: food.foodName,
+      food_img: food.food_img,
+      expDate: food.expDate,
+      status: food.status,
+      email : user?.email,
+      donateAmount : donation,
+      additionalNotes
+    };
+    axios.post('/request-foods',requestFood)
+    .then(res=>{
+      console.log(res.data)
+      if(res.data.insertedId){
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: " Your request accepted",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        form.reset()
+        navigate('/')
+      }
+    })
+  };
 
-const RequestProduct = () => {
-    return (
-        <div>
-            <form >
+  
+  return (
+    <form onSubmit={handleRequestFood}>
       <div className="md:w-1/2 mx-auto bg-[#F3F6FB] p-10 mt-5 border-none my-10">
         <h2 className="text-4xl mb-7 text-black font-bold text-center">
-          Request item
+          Request for Food
         </h2>
         <div className="grid gap-4 mb-6 md:grid-cols-2">
           <div>
+            <label htmlFor="">Foods name</label>
             <input
               type="text"
+              disabled
+              defaultValue={food?.foodName}
               className="bg-white  text-gray-900 text-sm border-none w-full p-2.5"
               placeholder="Food name"
-              disabled
               name="name"
             />
           </div>
           <div>
+            <label htmlFor="">Foods quantity</label>
             <input
               type="text"
-              id="first_name"
+              disabled
+              defaultValue={food?.quantity + " person to serve"}
               className="bg-white  text-gray-900 text-sm rounded-lg  w-full p-2.5"
-              placeholder="Enter Brand Name"
-              name="brandName"
+              placeholder="Food quantity"
+              name="quantity"
+            />
+          </div>
+          <div>
+            <label htmlFor="">Location</label>
+            <input
+              type="text"
+              disabled
+              defaultValue={food?.pickUp_location}
+              className="bg-white  text-gray-900 text-sm rounded-lg  w-full p-2.5"
+              placeholder="Location"
+              name="location"
+            />
+          </div>
+          <div>
+            <label htmlFor="">additional notes</label>
+            <input
+              type="text"
+              defaultValue={food?.additional_Notes}
+              className="bg-white  text-gray-900 text-sm rounded-lg  w-full p-2.5"
+              placeholder="notes"
+              name="notes"
             />
           </div>
           <div>
             <input
               type="text"
-              id="first_name"
               className="bg-white  text-gray-900 text-sm rounded-lg  w-full p-2.5"
-              placeholder="Enter price"
-              name="price"
+              placeholder="$ Donate amount"
+              name="donate"
             />
           </div>
-          <div>
-            <input
-              type="text"
-              id="first_name"
-              className="bg-white  text-gray-900 text-sm rounded-lg  w-full p-2.5"
-              placeholder="Enter product rating"
-              name="rating"
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              id="first_name"
-              className="bg-white  text-gray-900 text-sm rounded-lg  w-full p-2.5"
-              placeholder="Enter Description"
-              name="description"
-            />
-          </div>
-        </div>
-        <div className="w-full">
-          <input
-            type="text"
-            id="first_name"
-            className="bg-white  text-gray-900 text-sm rounded-lg  w-full p-2.5"
-            placeholder="Upload photo url"
-            name="photo"
-          />
         </div>
         <button
           type="submit"
           className="text-white bg-black w-full my-4  rounded-lg px-5 py-2.5 text-center"
         >
-          Add a new Product
+          Food Request
         </button>
       </div>
     </form>
-        </div>
-    );
+  );
 };
-
+RequestProduct.propTypes = {
+  food: PropTypes.object,
+};
 export default RequestProduct;

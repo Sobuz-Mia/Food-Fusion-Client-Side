@@ -1,18 +1,21 @@
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-const Feature = ({ feature }) => {
-  const {
-    _id,
-    foodName,
-    food_img,
-    quantity,
-    pickUp_location,
-    expDate,
-    additional_Notes,
-    donarName,
-    donar_img,
-  } = feature;
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+const AvailableFoodCard = ({ food }) => {
+ 
+    const {
+      _id,
+      foodName,
+      food_img,
+      quantity,
+      pickUp_location,
+      expDate,
+      additional_Notes,
+      donarName,
+      donar_img,
+    } = food;
+    console.log(foodName);
   return (
+   
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
       <div className="p-5">
         <img
@@ -52,7 +55,6 @@ const Feature = ({ feature }) => {
                 <img src={donar_img} />
               </div>
             </div>
-
           </div>
         </div>
         <div className="flex items-center justify-between">
@@ -60,7 +62,7 @@ const Feature = ({ feature }) => {
             $599
           </span>
           <Link
-          to={`/food-Details/${_id}`}
+            to={`/food-Details/${_id}`}
             className="text-white bg-primary hover:bg-slate-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
           >
             View Detail
@@ -70,7 +72,7 @@ const Feature = ({ feature }) => {
     </div>
   );
 };
-Feature.propTypes = {
-    feature:PropTypes.object
-}
-export default Feature;
+AvailableFoodCard.propTypes = {
+  food: PropTypes.object,
+};
+export default AvailableFoodCard;

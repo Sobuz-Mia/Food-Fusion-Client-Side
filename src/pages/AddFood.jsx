@@ -5,7 +5,6 @@ import useAxios from "../hooks/useAxios";
 const AddFood = () => {
     const {user} = useAuth();
     const axios = useAxios();
-    console.log(user)
   const date = new Date();
   const day = date.getDate();
   const month = date.getMonth() + 1; 
@@ -32,7 +31,8 @@ const AddFood = () => {
         additional_Notes : notes || "",
         donarName : user?.displayName,
         donarEmail : user?.email,
-        donar_img : user?.photoURL
+        donar_img : user?.photoURL,
+        status : 'available'
     }
 
     axios.post('/foods',addFood)

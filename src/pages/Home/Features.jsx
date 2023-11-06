@@ -9,7 +9,7 @@ const Features = () => {
   const [features, setFeatures] = useState([]);
   useEffect(() => {
     axios
-      .get("/all-features")
+      .get("/foods")
       .then((res) => {
         setFeatures(res?.data);
       })
