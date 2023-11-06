@@ -19,15 +19,15 @@ const Register = () => {
     createUser(email,password)
     .then(result=>{
         console.log(result.user)
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Your account create successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
         updateUser(name,photoUrl)
         .then(()=>{
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your account create successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
             navigate('/');
         })
         .catch((err)=>{
@@ -106,7 +106,7 @@ const Register = () => {
             </div>
             <div className="form-control mt-6">
               <button className="btn text-white normal-case bg-[#FF3811]">
-                Login
+                Register
               </button>
             </div>
             <p className="text-center my-4"> Or login with</p>
@@ -122,12 +122,12 @@ const Register = () => {
               </button>
             </div>
             <div className="text-sm font-medium text-gray-500 flex justify-center">
-              Do not have an account?{" "}
+            have a already account?{" "}
               <Link
                 to={"/login"}
                 className="text-blue-700 hover:underline dark:text-blue-500"
               >
-                Create Account
+                Login
               </Link>
             </div>
           </form>

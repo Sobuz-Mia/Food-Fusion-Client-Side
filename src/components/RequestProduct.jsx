@@ -17,7 +17,8 @@ const RequestProduct = ({ food }) => {
       food_img: food.food_img,
       expDate: food.expDate,
       status: food.status,
-      email : user?.email,
+      requesterEmail : user?.email,
+      requesterName: user?.displayName,
       donateAmount : donation,
       additionalNotes
     };
