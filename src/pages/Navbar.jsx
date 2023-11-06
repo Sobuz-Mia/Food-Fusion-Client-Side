@@ -29,7 +29,7 @@ const Navbar = () => {
         <NavLink to={"/add-Food"}>Add Food</NavLink>
       </li>
       <li>
-        <NavLink to={"/manage-food"} >Manage Foods</NavLink>
+        <NavLink to={"/manage-foods"} >Manage Foods</NavLink>
       </li>
       <li>
         <NavLink to={"/food-request"} >Food Request</NavLink>

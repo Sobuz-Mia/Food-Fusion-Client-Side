@@ -14,3 +14,11 @@
 body{
     font-family: 'Inter', sans-serif;
 }
+table{
+    width: 100%;
+}
+table th{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}

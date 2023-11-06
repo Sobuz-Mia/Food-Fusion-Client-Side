@@ -7,6 +7,8 @@ import ErrorPage from "../pages/ErrorPage";
 import AvailavleFoods from "../pages/AvailavleFoods";
 import FoodDetails from "../pages/Home/FoodDetails";
 import AddFood from "../pages/AddFood";
+import ManageFoods from "../pages/ManageFoods";
+import ManageUpdate from "../components/ManageUpdate";
 
 const createRoute = createBrowserRouter([
     {
@@ -29,6 +31,14 @@ const createRoute = createBrowserRouter([
             {
                 path:'/add-Food',
                 element:<AddFood/>
+            },
+            {
+                path:'/manage-foods',
+                element:<ManageFoods/>
+            },
+            {
+                path:'/manage-update/:id',
+                element:<ManageUpdate/>
             }
         ]
     },
