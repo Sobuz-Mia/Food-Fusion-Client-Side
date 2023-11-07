@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxios from "../hooks/useAxios";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const ManageUpdate = () => {
@@ -55,6 +56,11 @@ const ManageUpdate = () => {
   };
   return (
     <form onSubmit={handleUpdate}>
+      <Helmet>
+        <title>
+          Food Fusion | Foods Update
+        </title>
+      </Helmet>
       <div className="md:w-1/2 mx-auto bg-[#F3F6FB] p-10 mt-5 border-none my-10">
         <h2 className="text-4xl mb-7 text-black font-bold text-center">
           Update Food

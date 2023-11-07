@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { useEffect, useState } from "react";
 import RequestProduct from "../../components/RequestProduct";
+import { Helmet } from "react-helmet-async";
 
 const FoodDetails = () => {
   const { id } = useParams();
@@ -15,6 +16,11 @@ const FoodDetails = () => {
 
   return (
     <div className="flex justify-center flex-col mb-5">
+      <Helmet>
+        <title>
+          Food Fusion | Food Details
+        </title>
+      </Helmet>
       <div className="w-3/4 mt-2.5 mb-5 text-center mx-auto">
         <h2 className="text-lg font-semibold">Donor Information</h2>
         <div className="flex items-center justify-center my-4 gap-5">

@@ -3,9 +3,9 @@ import useAxios from "../hooks/useAxios";
 import { useTable } from "react-table";
 import { BiEdit } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 const ManageFoods = () => {
   const axios = useAxios();
   const [dataCard, setDataCard] = useState([]);
@@ -92,6 +92,11 @@ const ManageFoods = () => {
     useTable({ columns, data: dataCard });
   return (
     <div className="">
+      <Helmet>
+        <title>
+          Food Fusion | Manage Foods
+        </title>
+      </Helmet>
       <table {...getTableProps()} className="table">
         <thead>
           {headerGroups.map((headerGroup) => (

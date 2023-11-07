@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import useAxios from "../hooks/useAxios";
+import { Helmet } from "react-helmet-async";
 
 const AddFood = () => {
     const {user} = useAuth();
@@ -52,6 +53,11 @@ const AddFood = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>
+          Food Fusion | Add Food
+        </title>
+      </Helmet>
       <form onSubmit={handleAddFood}>
         <div className="md:w-1/2 mx-auto bg-[#F3F6FB] p-10 mt-5 border-none my-10">
           <h2 className="text-4xl mb-7 text-black font-bold text-center">
