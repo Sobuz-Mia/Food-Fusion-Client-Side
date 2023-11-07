@@ -11,7 +11,7 @@ const ManageFoods = () => {
   const [dataCard, setDataCard] = useState([]);
     const {user} = useAuth();
   useEffect(() => {
-    axios.get(`/request-foods/?email=${user?.email}`).then((res) => {
+    axios.get(`/manage-foods/?email=${user?.email}`).then((res) => {
       setDataCard(res.data);
     });
   }, [user?.email,axios]);
@@ -40,7 +40,6 @@ const ManageFoods = () => {
       }
     });
   };
-  const handleManage = () => {};
   const columns = useMemo(
     () => [
       {
@@ -76,12 +75,13 @@ const ManageFoods = () => {
             >
               X
             </button>
+            <Link to={`/manage-page/${row.original?._id}`}>
             <button
-              onClick={() => handleManage(row.original)}
               className="btn btn-ghost btn-sm normal-case"
             >
               Manage
             </button>
+            </Link>
           </div>
         ),
       },

@@ -6,11 +6,7 @@ import { Helmet } from "react-helmet-async";
 const AddFood = () => {
     const {user} = useAuth();
     const axios = useAxios();
-  const date = new Date();
-  const day = date.getDate();
-  const month = date.getMonth() + 1; 
-  const year = date.getFullYear();
-  const currentDate = day + '/' + month + '/' + year;
+  
 
   const handleAddFood = (e) => {
     e.preventDefault();
@@ -27,13 +23,12 @@ const AddFood = () => {
         food_img :url,
         quantity,
         pickUp_location:location,
-        mfgDate :currentDate,
         expDate : ExpireDate,
         additional_Notes : notes || "",
         donarName : user?.displayName,
         donarEmail : user?.email,
         donar_img : user?.photoURL,
-        status : 'available'
+        status : 'available' || '',
     }
 
     axios.post('/foods',addFood)

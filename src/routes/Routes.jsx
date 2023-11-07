@@ -10,6 +10,7 @@ import AddFood from "../pages/AddFood";
 import ManageFoods from "../pages/ManageFoods";
 import ManageUpdate from "../components/ManageUpdate";
 import FoodRequest from "../pages/FoodRequest";
+import ManageSingleFood from "../pages/ManageSingleFood";
 
 const createRoute = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ const createRoute = createBrowserRouter([
             {
                 path:'/food-request',
                 element:<FoodRequest/>
+            },
+            {
+                path:'/manage-page/:id',
+                element:<ManageSingleFood/>
             }
         ]
     },

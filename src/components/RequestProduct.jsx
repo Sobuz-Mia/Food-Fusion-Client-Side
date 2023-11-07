@@ -4,10 +4,14 @@ import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 const RequestProduct = ({ food }) => {
-  console.log(food)
   const navigate = useNavigate();
   const axios = useAxios();
   const {user} = useAuth();
+  const date = new Date();
+  const day = date.getDate();
+  const month = date.getMonth() + 1; 
+  const year = date.getFullYear();
+  const currentDate = day + '/' + month + '/' + year;
   const handleRequestFood = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -21,14 +25,16 @@ const RequestProduct = ({ food }) => {
       donarEmail : food.donarEmail,
       donarName: food.donarName,
       donar_img : food.donar_img,
+      requestDate :currentDate,
       requesterEmail : user?.email,
       requesterName: user?.displayName,
+      requester_img : user?.photoURL,
       donateAmount : donation,
+      pick_location :food.pickUp_location,
       additionalNotes
     };
     axios.post('/request-foods',requestFood)
     .then(res=>{
-      console.log(res.data)
       if(res.data.insertedId){
         Swal.fire({
           position: "center",
@@ -38,12 +44,12 @@ const RequestProduct = ({ food }) => {
           timer: 1500
         });
         form.reset()
-        navigate('/')
+        navigate('/available-foods')
       }
     })
   };
 
-  
+  console.log(food);
   return (
     <form onSubmit={handleRequestFood}>
       <div className="md:w-1/2 mx-auto bg-[#F3F6FB] p-10 mt-5 border-none my-10">
