@@ -1,26 +1,32 @@
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "../hooks/useAuth";
 import useAxios from "../hooks/useAxios";
 import Swal from "sweetalert2";
+import { useParams } from "react-router-dom";
 
 const ManageSingleFood = () => {
-  const { user } = useAuth();
+  // custom hook
   const axios = useAxios();
-  const { data,isLoading,refetch} = useQuery({
+  const { id } = useParams();
+  // data fetch using tansTackQuery
+  const { data,refetch} = useQuery({
     queryKey: ["requestedFood"],
     queryFn: async () => {
-      const res = await axios.get(
-        `http://localhost:5000/api/v1/manage/single-food/?email=${user?.email}`
-      );
+      const res = await axios.get(`/manage/single-food/${id}`);
+
       return res.data;
     },
   });
-  if(isLoading) {
-    return <div className="w-24 mx-auto flex items-center h-screen">
-    <span className="loading loading-spinner text-secondary w-full"></span>
-  </div>
-  }
-  const handlePendingRequest = id =>{
+
+  console.log(data);
+  // loading spinner
+  // if(isLoading) {
+  //   return <div className="w-24 mx-auto flex items-center h-screen">
+  //   <span className="loading loading-spinner text-secondary w-full"></span>
+  // </div>
+  // }
+  // handle pending request update
+  const handlePendingRequest = (id) => {
+    console.log(id)
     axios.patch(`/update-status/${id}`,{
         status : 'Delivered'
     })
@@ -35,11 +41,8 @@ const ManageSingleFood = () => {
               });
               refetch()
         }
-     
     })
-    console.log(id)
-  }
-  console.log(data);
+  };
   return (
     <div>
       <div className="overflow-x-auto">
@@ -60,42 +63,43 @@ const ManageSingleFood = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {data?.map((item) => (
-              <>
-                <tr>
-                  <th>
-                    <label>
-                      <input type="checkbox" className="checkbox" />
-                    </label>
-                  </th>
-                  <td>
-                    <div className="flex items-center space-x-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12">
-                          <img
-                            src={item?.requester_img}
-                            alt="Avatar Tailwind CSS Component"
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <div className="font-bold">{item?.requesterName}</div>
-                        <div className="text-sm opacity-50">{item?.foodName}</div>
-                      </div>
+            <tr>
+              <th>
+                <label>
+                  <input type="checkbox" className="checkbox" />
+                </label>
+              </th>
+              <td>
+                <div className="flex items-center space-x-3">
+                  <div className="avatar">
+                    <div className="mask mask-squircle w-12 h-12">
+                      <img
+                        src={data?.requester_img}
+                        alt="Avatar Tailwind CSS Component"
+                      />
                     </div>
-                  </td>
-                  <td>
-                    <span className="badge badge-ghost badge-sm">
-                     {item?.requesterEmail}
-                    </span>
-                  </td>
-                  <td>{item?.requestDate}</td>
-                  <th>
-                    <button onClick={()=>handlePendingRequest(item._id)} className="btn btn-ghost text-lg normal-case">{item?.status}</button>
-                  </th>
-                </tr>
-              </>
-            ))}
+                  </div>
+                  <div>
+                    <div className="font-bold">{data?.requesterName}</div>
+                    <div className="text-sm opacity-50">{data?.foodName}</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <span className="badge badge-ghost badge-sm">
+                  {data?.requesterEmail}
+                </span>
+              </td>
+              <td>{data?.requestDate}</td>
+              <th>
+                <button
+                  onClick={() => handlePendingRequest(data._id)}
+                  className="btn btn-ghost text-lg normal-case"
+                >
+                  {data?.status}
+                </button>
+              </th>
+            </tr>
           </tbody>
         </table>
       </div>

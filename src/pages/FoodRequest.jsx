@@ -121,7 +121,7 @@ const FoodRequest = () => {
                       {item?.requestDate}
                     </span>
                   </td>
-                  <td>{item?.donateAmount}</td>
+                  <td> $ {item?.donateAmount}</td>
                   <th>
                     <button className="btn btn-ghost text-lg normal-case">
                       {item?.status}

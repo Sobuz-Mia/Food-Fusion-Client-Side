@@ -10,12 +10,17 @@ const ManageFoods = () => {
   const axios = useAxios();
   const [dataCard, setDataCard] = useState([]);
     const {user} = useAuth();
+
+    // data fetching
   useEffect(() => {
     axios.get(`/manage-foods/?email=${user?.email}`).then((res) => {
       setDataCard(res.data);
     });
   }, [user?.email,axios]);
+
+  // handle delete food
   const handleDelete = (id) => {
+    console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -68,14 +73,14 @@ const ManageFoods = () => {
                 <BiEdit className="text-xl"></BiEdit>
               </button>
             </Link>
-            {/* <button onClick={() => handleEdit(row.original._id)} className="btn btn-ghost btn-sm"><BiEdit className="text-xl"></BiEdit></button> */}
+            
             <button
               onClick={() => handleDelete(row.original._id)}
               className="btn btn-ghost btn-sm text-xl"
             >
               X
             </button>
-            <Link to={`/manage-page/${row.original?._id}`}>
+            <Link to={`/manage-page/${row.original._id}`}>
             <button
               className="btn btn-ghost btn-sm normal-case"
             >
@@ -86,7 +91,7 @@ const ManageFoods = () => {
         ),
       },
     ],
-    [dataCard]
+    []
   );
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data: dataCard });

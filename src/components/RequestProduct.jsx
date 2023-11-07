@@ -31,6 +31,7 @@ const RequestProduct = ({ food }) => {
       requester_img : user?.photoURL,
       donateAmount : donation,
       pick_location :food.pickUp_location,
+      food_id: food._id,
       additionalNotes
     };
     axios.post('/request-foods',requestFood)

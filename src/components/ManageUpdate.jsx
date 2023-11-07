@@ -10,13 +10,13 @@ const ManageUpdate = () => {
   const axios = useAxios();
   const { id } = useParams();
   const { data } = useQuery({
-    queryKey: ["manage-foods"],
+    queryKey: ["update food"],
     queryFn: async () => {
-      const res = await axios.get(`/request-food/${id}`);
+      const res = await axios.get(`/foods/${id}`);
       return res;
     },
   });
- 
+ console.log(data)
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -58,7 +58,7 @@ const ManageUpdate = () => {
     <form onSubmit={handleUpdate}>
       <Helmet>
         <title>
-          Food Fusion | Foods Update
+          Food Fusion | Update food
         </title>
       </Helmet>
       <div className="md:w-1/2 mx-auto bg-[#F3F6FB] p-10 mt-5 border-none my-10">
