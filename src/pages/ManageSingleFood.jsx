@@ -8,7 +8,7 @@ const ManageSingleFood = () => {
   const axios = useAxios();
   const { id } = useParams();
   // data fetch using tansTackQuery
-  const { data,refetch} = useQuery({
+  const { data,refetch,isLoading} = useQuery({
     queryKey: ["requestedFood"],
     queryFn: async () => {
       const res = await axios.get(`/manage/single-food/${id}`);
@@ -17,13 +17,13 @@ const ManageSingleFood = () => {
     },
   });
 
-  console.log(data);
+  
   // loading spinner
-  // if(isLoading) {
-  //   return <div className="w-24 mx-auto flex items-center h-screen">
-  //   <span className="loading loading-spinner text-secondary w-full"></span>
-  // </div>
-  // }
+  if(isLoading) {
+    return <div className="w-24 mx-auto flex items-center h-screen">
+    <span className="loading loading-spinner text-secondary w-full"></span>
+  </div>
+  }
   // handle pending request update
   const handlePendingRequest = (id) => {
     console.log(id)
@@ -93,7 +93,7 @@ const ManageSingleFood = () => {
               <td>{data?.requestDate}</td>
               <th>
                 <button
-                  onClick={() => handlePendingRequest(data._id)}
+                  onClick={() => handlePendingRequest(data.food_id)}
                   className="btn btn-ghost text-lg normal-case"
                 >
                   {data?.status}

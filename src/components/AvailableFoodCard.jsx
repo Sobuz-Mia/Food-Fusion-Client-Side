@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 const AvailableFoodCard = ({ food }) => {
-  console.log(food);
   const {
     _id,
     foodName,

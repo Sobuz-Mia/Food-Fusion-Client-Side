@@ -3,13 +3,13 @@ import useAuth from './../hooks/useAuth';
 const PrivateRoute = ({children}) => {
     const location = useLocation();
     const {user,isLoading} = useAuth();
-
-   console.log(location);
-   if(isLoading){
-    <div className="w-24 mx-auto flex items-center h-screen">
+    console.log(isLoading);
+    if (isLoading)
+    return (
+      <div className="w-24 mx-auto flex items-center h-screen">
         <span className="loading loading-spinner text-secondary w-full"></span>
       </div>
-   }
+    );
     if(user){
         return children
     }

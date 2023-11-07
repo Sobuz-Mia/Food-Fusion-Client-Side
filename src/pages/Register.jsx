@@ -1,13 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import userLogo from "../assets/images/userLogin.jpg";
 import useAuth from "../hooks/useAuth";
-import { BiLogoFacebookCircle } from "react-icons/bi";
-import { BiLogoLinkedin } from "react-icons/bi";
 import { FcGoogle } from "react-icons/fc";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser,updateUser } = useAuth();
+  const { createUser,updateUser,googleLogin } = useAuth();
   const navigate = useNavigate();
   const handleCreateUser = (e) => {
     e.preventDefault();
@@ -40,6 +38,14 @@ const Register = () => {
         })
     })
   };
+  const hangleGoogleLogin = () =>{
+    googleLogin()
+    .then(result=>{
+      if(result.user){
+        navigate('/')
+      }
+    })
+  }
   return (
     <div className="hero min-h-screen bg-base-200 my-3 rounded-md">
       <div className="hero-content flex-col lg:flex-row">
@@ -111,13 +117,7 @@ const Register = () => {
             </div>
             <p className="text-center my-4"> Or login with</p>
             <div className="flex gap-5 justify-center mb-3">
-              <button className=" w-10 h-10 rounded-full bg-[#F5F5F8]">
-                <BiLogoFacebookCircle className="text-3xl text-[#3B5998] ml-1" />
-              </button>
-              <button className=" w-10 h-10 rounded-full bg-[#F5F5F8]">
-                <BiLogoLinkedin className="text-3xl text-[#0A66C2] ml-1" />
-              </button>
-              <button className=" w-10 h-10 rounded-full bg-[#F5F5F8]">
+              <button onClick={hangleGoogleLogin} className=" w-10 h-10 rounded-full bg-[#F5F5F8]">
                 <FcGoogle className="text-3xl text-[#3B5998] ml-1" />
               </button>
             </div>

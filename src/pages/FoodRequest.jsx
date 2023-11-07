@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const FoodRequest = () => {
   const { user } = useAuth();
   const axios = useAxios();
-  const { data,refetch ,isLoading} = useQuery({
+  const { data, refetch, isLoading } = useQuery({
     queryKey: ["myRequestFood"],
     queryFn: async () => {
       const res = await axios.get(
@@ -40,7 +40,7 @@ const FoodRequest = () => {
                 text: "Your file has been deleted.",
                 icon: "success",
               });
-              refetch()
+              refetch();
             }
           });
         }
@@ -48,11 +48,14 @@ const FoodRequest = () => {
     }
   };
 
-  if(isLoading) {
-    return <div className="w-24 mx-auto flex items-center h-screen">
-    <span className="loading loading-spinner text-secondary w-full"></span>
-  </div>
+  if (isLoading) {
+    return (
+      <div className="w-24 mx-auto flex items-center h-screen">
+        <span className="loading loading-spinner text-secondary w-full"></span>
+      </div>
+    );
   }
+
   return (
     <div>
       <Helmet>
@@ -80,7 +83,7 @@ const FoodRequest = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {data?.map((item) => (
+            {data.length > 0 ? data?.map((item) => (
               <>
                 <tr>
                   <th>
@@ -142,7 +145,10 @@ const FoodRequest = () => {
                   </td>
                 </tr>
               </>
-            ))}
+            ))
+            :
+            ''
+          }
           </tbody>
         </table>
       </div>

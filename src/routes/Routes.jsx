@@ -29,7 +29,11 @@ const createRoute = createBrowserRouter([
       },
       {
         path: "/food-Details/:id",
-        element: <FoodDetails />,
+        element: (
+          <PrivateRoute>
+            <FoodDetails />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "/add-Food",
@@ -41,19 +45,35 @@ const createRoute = createBrowserRouter([
       },
       {
         path: "/manage-foods",
-        element: <ManageFoods />,
+        element: (
+          <PrivateRoute>
+            <ManageFoods />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/manage-update/:id",
-        element: <ManageUpdate />,
+        element: (
+          <PrivateRoute>
+            <ManageUpdate />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/food-request",
-        element: <FoodRequest />,
+        element: (
+          <PrivateRoute>
+            <FoodRequest />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/manage-page/:id",
-        element: <ManageSingleFood />,
+        element: (
+          <PrivateRoute>
+            <ManageSingleFood />
+          </PrivateRoute>
+        ),
       },
     ],
   },

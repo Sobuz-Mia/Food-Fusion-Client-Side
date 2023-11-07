@@ -21,7 +21,7 @@ const RequestProduct = ({ food }) => {
       foodName: food.foodName,
       food_img: food.food_img,
       expDate: food.expDate,
-      status: food.status,
+      status: 'Pending',
       donarEmail : food.donarEmail,
       donarName: food.donarName,
       donar_img : food.donar_img,
