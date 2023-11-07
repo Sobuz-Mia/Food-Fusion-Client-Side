@@ -4,6 +4,7 @@ import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 const RequestProduct = ({ food }) => {
+  console.log(food)
   const navigate = useNavigate();
   const axios = useAxios();
   const {user} = useAuth();
@@ -17,6 +18,9 @@ const RequestProduct = ({ food }) => {
       food_img: food.food_img,
       expDate: food.expDate,
       status: food.status,
+      donarEmail : food.donarEmail,
+      donarName: food.donarName,
+      donar_img : food.donar_img,
       requesterEmail : user?.email,
       requesterName: user?.displayName,
       donateAmount : donation,

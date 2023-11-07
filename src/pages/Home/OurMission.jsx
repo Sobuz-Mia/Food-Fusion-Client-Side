@@ -23,8 +23,8 @@ const OurMission = () => {
           That no person or family in our community goes hungry.
         </p>
       </div>
-      <div className="flex">
-        <div className="p-10 w-1/2">
+      <div className="flex flex-col md:flex-row">
+        <div className="p-10 md:w-1/2">
           <img
             src="https://img.freepik.com/free-photo/volunteers-helping-packing-donations-world-food-day_23-2148637932.jpg?w=826&t=st=1699297456~exp=1699298056~hmac=fb535008fd9657a7ae941530613053448f106b8c4e59e254f8262a6a0c208ab0"
             alt=""

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner&display=swap');
 .bg-primary{
     background-color: #39DB4A;
     color: white;
@@ -21,4 +21,8 @@ table th{
     font-size: 20px;
     font-weight: bold;
     color: black;
+}
+
+.slider-fonts{
+    font-family: 'Edu TAS Beginner', cursive;
 }
