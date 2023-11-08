@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
-import useAxios from "../../hooks/useAxios";
 import Feature from "./Feature";
 import { Link } from "react-router-dom";
+import axios from "axios";
 // import axios from "axios";
 
 const Features = () => {
-  const axios = useAxios();
   const [features, setFeatures] = useState([]);
   useEffect(() => {
     axios
-      .get("/foods")
+      .get("http://localhost:5000/api/v1/foods")
       .then((res) => {
         setFeatures(res?.data);
       })

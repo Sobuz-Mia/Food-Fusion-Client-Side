@@ -14,7 +14,14 @@ const AvailavleFoods = () => {
       setFoods(res.data);
     });
   }, [axios]);
-  
+  const handleSorting = e =>{
+    e.preventDefault();
+    console.log(e.target.value)
+  }
+  const handleSearchFiled = (e) =>{
+    e.preventDefault();
+    console.log(e.target.value);
+  }
 
   return (
     <div>
@@ -26,13 +33,13 @@ const AvailavleFoods = () => {
       <div className="flex justify-end gap-5 my-4">
         <div className="flex gap-5 items-center">
           <p className="w-full flex items-center gap-5 text-2xl">Find your food <FaRegHandPointRight/></p>
-        <input  type="text" placeholder="Search here" className="input input-bordered  w-full max-w-md" />
+        <input  type="text" onChange={handleSearchFiled} placeholder="Search here" className="input input-bordered  w-full max-w-md" />
         </div>
         <div>
-          <select name="" id="">
+          <select name="" id="" onChange={handleSorting}>
             <option value="">sort by date</option>
-            <option value="">Asc</option>
-            <option value="">Dsc</option>
+            <option value="asd">Asc</option>
+            <option value="dsc">Dsc</option>
           </select>
         </div>
       </div>

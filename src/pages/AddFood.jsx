@@ -1,11 +1,10 @@
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
-import useAxios from "../hooks/useAxios";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 const AddFood = () => {
     const {user} = useAuth();
-    const axios = useAxios();
   
 
   const handleAddFood = (e) => {
@@ -31,7 +30,7 @@ const AddFood = () => {
         status : 'available' || '',
     }
 
-    axios.post('/foods',addFood)
+    axios.post('http://localhost:5000/api/v1/foods',addFood)
     .then(res=>{
         if(res.data.insertedId){
             Swal.fire({
