@@ -13,7 +13,7 @@ const AvailableFoodCard = ({ food }) => {
   } = food;
   // console.log(food);
   return (
-    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+    <div className="w-full bg-white border border-gray-200 rounded-lg shadow">
       <div className="p-5">
         <img
           className=" w-full rounded-lg h-[400px]"
@@ -24,23 +24,23 @@ const AvailableFoodCard = ({ food }) => {
       <div className="px-5 pb-5">
         <div>
           <h2 className="text-2xl font-bold mb-2">
-            <span className="text-xl font-semibold">Name:</span> {foodName}
+            <span className="text-xl font-semibold">Name:{foodName}</span> 
           </h2>
           <h5 className="text-xl h-12">
-            <span className="text-xl font-semibold">Location:</span>
-            {pickUp_location} person
+            <span className="text-xl font-semibold">Location:{pickUp_location}</span>
+            
           </h5>
           <h5 className="text-xl mb-2 mt-2">
-            <span className="text-xl font-semibold">Expire in:</span>
-            {expDate} person
+            <span className="text-xl font-semibold">Expire in:{expDate} </span>
+            
           </h5>
           <h5 className="text-xl h-12 ">
-            <span className="text-xl font-semibold">Notes:</span>
-            {additional_Notes} person
+            <span className="text-xl font-semibold">Notes:{additional_Notes} </span>
+            
           </h5>
           <h5 className="text-xl ">
-            <span className="text-xl font-semibold ">Serve it to :</span>
-            {quantity} person
+            <span className="text-xl font-semibold ">Serve it to:{quantity} </span>
+            
           </h5>
         </div>
         <div className="mt-2.5 mb-5 text-center">

@@ -33,9 +33,8 @@ const FoodDetails = () => {
         </div>
         <h2 className="text-xl ">
           <span className="text-2xl font-bold primary-color">
-            PickUp Location:
-          </span>{" "}
-          {food?.pickUp_location}
+            PickUp Location:{food?.pickUp_location}
+          </span>
         </h2>
       </div>
       <div className=" md:w-1/2 bg-white border border-gray-200 rounded-lg shadow mx-auto">
@@ -49,20 +48,19 @@ const FoodDetails = () => {
         <div className="px-5 pb-5">
           <div>
             <h2 className="text-2xl font-bold mb-2">
-              <span className="text-xl font-semibold">Name:</span>{" "}
-              {food?.foodName}
+              <span className="text-xl font-semibold">Name:{food?.foodName}</span>
+              
             </h2>
             <h5 className="text-xl mb-2 mt-2">
-              <span className="text-xl font-semibold">Expire in:</span>
-              {food?.expiredDateTime} person
+              <span className="text-xl font-semibold">Expire in:{food?.expDate}</span>
             </h5>
             <h5 className="text-xl h-12 ">
-              <span className="text-xl font-semibold">Notes:</span>
-              {food?.additional_Notes} person
+              <span className="text-xl font-semibold">Notes:{food?.additional_Notes}</span>
+              
             </h5>
             <h5 className="text-xl ">
-              <span className="text-xl font-semibold ">Serve it to :</span>
-              {food?.quantity} person
+              <span className="text-xl font-semibold ">Serve it to: {food?.quantity} person</span>
+              
             </h5>
           </div>
 

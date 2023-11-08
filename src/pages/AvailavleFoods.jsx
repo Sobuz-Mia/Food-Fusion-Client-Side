@@ -62,7 +62,7 @@ const AvailavleFoods = () => {
           </select> */}
         </div>
       </div>
-      <div className="grid md:grid-cols-3 gap-5">
+      <div className="grid md:grid-cols-2 gap-5">
         {foods?.map((food) => (
           <AvailableFoodCard food={food} key={food._id}></AvailableFoodCard>
         ))}
