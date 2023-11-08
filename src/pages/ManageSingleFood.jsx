@@ -8,7 +8,7 @@ const ManageSingleFood = () => {
   const axios = useAxios();
   const { id } = useParams();
   // data fetch using tansTackQuery
-  const { data,refetch,isLoading} = useQuery({
+  const { data,isLoading,refetch,} = useQuery({
     queryKey: ["requestedFood"],
     queryFn: async () => {
       const res = await axios.get(`/manage/single-food/${id}`);

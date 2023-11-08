@@ -4,7 +4,6 @@ const AvailableFoodCard = ({ food }) => {
   const {
     _id,
     foodName,
-    food_img,
     quantity,
     pickUp_location,
     expDate,
@@ -12,12 +11,13 @@ const AvailableFoodCard = ({ food }) => {
     donarName,
     donar_img,
   } = food;
+  // console.log(food);
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
       <div className="p-5">
         <img
           className=" w-full rounded-lg"
-          src={food_img}
+          src={food?.food_img}
           alt="product image"
         />
       </div>

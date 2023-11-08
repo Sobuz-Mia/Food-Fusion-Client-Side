@@ -7,7 +7,8 @@ import { Helmet } from "react-helmet-async";
 const AvailavleFoods = () => {
   const axios = useAxios();
   const [foods, setFoods] = useState([]);
- 
+  
+
 
   useEffect(() => {
     axios.get("/foods").then((res) => {
@@ -16,11 +17,17 @@ const AvailavleFoods = () => {
   }, [axios]);
   const handleSorting = e =>{
     e.preventDefault();
-    console.log(e.target.value)
+    const sortValue = e.target.value;
   }
+  // console.log(searchValue);
+
   const handleSearchFiled = (e) =>{
-    e.preventDefault();
-    console.log(e.target.value);
+    const value = e.target.value;
+    
+    axios.get(`/foods/?search=${value}`)
+    .then(res=>{
+      setFoods(res.data)
+    })
   }
 
   return (

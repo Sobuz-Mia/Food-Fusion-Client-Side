@@ -91,7 +91,7 @@ const ManageFoods = () => {
         ),
       },
     ],
-    []
+    [dataCard]
   );
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data: dataCard });
