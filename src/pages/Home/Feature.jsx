@@ -16,7 +16,7 @@ const Feature = ({ feature }) => {
     <div className="w-full bg-white border border-gray-200 rounded-lg shadow">
       <div className="p-5">
         <img
-          className=" w-full rounded-lg"
+          className=" w-full rounded-lg h-[400px]"
           src={food_img}
           alt="product image"
         />
