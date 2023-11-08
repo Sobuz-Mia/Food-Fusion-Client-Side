@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
       console.log(logInUser);
       if (user) {
         axios
-          .post("http://localhost:5000/api/vi/jwt", logInUser, {
+          .post("https://community-food-sharing-server-side.vercel.app/api/vi/jwt", logInUser, {
             withCredentials: true,
           })
           .then((res) => {
@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
           });
       } else {
         axios
-          .post("http://localhost:5000/api/vi/logOut", logInUser, {
+          .post("https://community-food-sharing-server-side.vercel.app/api/vi/logOut", logInUser, {
             withCredentials: true,
           })
           .then((res) => {

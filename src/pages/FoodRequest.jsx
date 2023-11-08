@@ -11,7 +11,7 @@ const FoodRequest = () => {
     queryKey: ["myRequestFood"],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/api/v1/myRequest/food/?email=${user?.email}`
+        `https://community-food-sharing-server-side.vercel.app/api/v1/myRequest/food/?email=${user?.email}`
       );
       return res.data;
     },

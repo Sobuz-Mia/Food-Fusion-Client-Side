@@ -30,7 +30,7 @@ const AddFood = () => {
         status : 'available' || '',
     }
 
-    axios.post('http://localhost:5000/api/v1/foods',addFood)
+    axios.post('https://community-food-sharing-server-side.vercel.app/api/v1/foods',addFood)
     .then(res=>{
         if(res.data.insertedId){
             Swal.fire({

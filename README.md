@@ -1,8 +1,13 @@
-# React + Vite
+# FoodFusion community side  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## [ Website Live Link](https://community-food-sharing-93a74.web.app/)
 
-Currently, two official plugins are available:
+Click here for visit the site: [https://community-food-sharing-93a74.web.app/](https://community-food-sharing-93a74.web.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Five feature for my site
+
+- user can donation her left over food in my side using add food option
+- user can also request our food which is status is available
+- User can manage her donated food by clicking our manage food options
+- User show the website in the bottom , that our mission and also see our food distribution details yearly.
+- User automatically logout when his access token is expire.That means her data is secure for other user . 

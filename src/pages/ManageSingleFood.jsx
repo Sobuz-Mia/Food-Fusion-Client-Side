@@ -26,16 +26,18 @@ const ManageSingleFood = () => {
   }
   // handle pending request update
   const handlePendingRequest = (id) => {
-    console.log(id)
+   
     axios.patch(`/update-status/${id}`,{
         status : 'Delivered'
     })
     .then(res=>{
-        if(res.data.modifiedCount){
+      console.log(res.data)
+        if(res.data?.result.modifiedCount){
+
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "Updated successfully",
+                title: "Updated successfully!! please reload ",
                 showConfirmButton: false,
                 timer: 1500
               });
@@ -43,6 +45,7 @@ const ManageSingleFood = () => {
         }
     })
   };
+  
   return (
     <div>
       <div className="overflow-x-auto">

@@ -8,7 +8,7 @@ const Features = () => {
   const [features, setFeatures] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/foods")
+      .get("https://community-food-sharing-server-side.vercel.app/api/v1/foods")
       .then((res) => {
         setFeatures(res?.data);
       })
