@@ -28,15 +28,15 @@ const Feature = ({ feature }) => {
           </h2>
           <h5 className="text-xl h-12">
             <span className="text-xl font-semibold">Location:</span>
-            {pickUp_location} person
+            {pickUp_location} 
           </h5>
           <h5 className="text-xl mb-2 mt-2">
             <span className="text-xl font-semibold">Expire in:</span>
-            {expDate} person
+            {expDate} 
           </h5>
           <h5 className="text-xl h-12 ">
             <span className="text-xl font-semibold">Notes:</span>
-            {additional_Notes} person
+            {additional_Notes} 
           </h5>
           <h5 className="text-xl ">
             <span className="text-xl font-semibold ">Serve it to :</span>

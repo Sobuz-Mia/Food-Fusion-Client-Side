@@ -15,7 +15,7 @@ const Features = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [axios]);
+  }, []);
   return (
     <div>
       <div className="text-center ">
