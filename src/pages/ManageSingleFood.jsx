@@ -8,7 +8,7 @@ const ManageSingleFood = () => {
   const axios = useAxios();
   const { id } = useParams();
   // data fetch using tansTackQuery
-  const { data,isLoading,refetch,} = useQuery({
+  const { data, isLoading, refetch } = useQuery({
     queryKey: ["requestedFood"],
     queryFn: async () => {
       const res = await axios.get(`/manage/single-food/${id}`);
@@ -17,35 +17,35 @@ const ManageSingleFood = () => {
     },
   });
 
-  
   // loading spinner
-  if(isLoading) {
-    return <div className="w-24 mx-auto flex items-center h-screen">
-    <span className="loading loading-spinner text-secondary w-full"></span>
-  </div>
+  if (isLoading) {
+    return (
+      <div className="w-24 mx-auto flex items-center h-screen">
+        <span className="loading loading-spinner text-secondary w-full"></span>
+      </div>
+    );
   }
   // handle pending request update
   const handlePendingRequest = (id) => {
-   
-    axios.patch(`/update-status/${id}`,{
-        status : 'Delivered'
-    })
-    .then(res=>{
-      console.log(res.data)
-        if(res.data?.result.modifiedCount){
-
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Updated successfully!! please reload ",
-                showConfirmButton: false,
-                timer: 1500
-              });
-              refetch()
+    axios
+      .patch(`/update-status/${id}`, {
+        status: "Delivered",
+      })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data?.result.modifiedCount) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Updated successfully!! please reload ",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          refetch();
         }
-    })
+      });
   };
-  
+
   return (
     <div>
       <div className="overflow-x-auto">

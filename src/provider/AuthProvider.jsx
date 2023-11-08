@@ -10,7 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
-import useAxios from "./../hooks/useAxios";
+
 import axios from "axios";
 
 export const AuthContext = createContext();
@@ -48,20 +48,28 @@ const AuthProvider = ({ children }) => {
       setUser(user);
       setIsLoading(false);
       const logInUser = { email: user?.email };
-      console.log(logInUser);
+
       if (user) {
         axios
-          .post("https://community-food-sharing-server-side.vercel.app/api/vi/jwt", logInUser, {
-            withCredentials: true,
-          })
+          .post(
+            "https://community-food-sharing-server-side.vercel.app/api/vi/jwt",
+            logInUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             console.log(res.data);
           });
       } else {
         axios
-          .post("https://community-food-sharing-server-side.vercel.app/api/vi/logOut", logInUser, {
-            withCredentials: true,
-          })
+          .post(
+            "https://community-food-sharing-server-side.vercel.app/api/vi/logOut",
+            logInUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             console.log(res.data);
           });

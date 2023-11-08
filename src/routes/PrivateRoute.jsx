@@ -3,7 +3,6 @@ import useAuth from './../hooks/useAuth';
 const PrivateRoute = ({children}) => {
     const location = useLocation();
     const {user,isLoading} = useAuth();
-    console.log(isLoading);
     if (isLoading)
     return (
       <div className="w-24 mx-auto flex items-center h-screen">
