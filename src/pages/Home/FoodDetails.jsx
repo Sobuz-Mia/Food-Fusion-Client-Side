@@ -33,7 +33,7 @@ const FoodDetails = () => {
         </div>
         <h2 className="text-xl ">
           <span className="text-2xl font-bold primary-color">
-            PickUp Location:{food?.pickUp_location}
+            PickUp Location:<span className="text-black text-xl"> {food?.pickUp_location}</span>
           </span>
         </h2>
       </div>

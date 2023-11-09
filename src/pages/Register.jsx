@@ -1,51 +1,56 @@
 import { Link, useNavigate } from "react-router-dom";
 import userLogo from "../assets/images/userLogin.jpg";
 import useAuth from "../hooks/useAuth";
-import { FcGoogle } from "react-icons/fc";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
-  const { createUser,updateUser,googleLogin } = useAuth();
+  const {updateUser } = useAuth();
+  const {createUser} = useContext(AuthContext)
+  const regEx = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\-]).{6,}$/;
   const navigate = useNavigate();
-  const handleCreateUser = (e) => {
+  const handleCreateUser = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     const photoUrl = form.photoUrl.value;
-    createUser(email,password)
-    .then(result=>{
-        console.log(result.user)
-        updateUser(name,photoUrl)
-        .then(()=>{
+    if (!regEx.test(password)) {
+      Swal.fire({
+        icon: "error",
+        text: "Password must be 6 characters with one capital letter and special characters",
+      });
+    } else{
+      try {
+        const result = await createUser(email, password);
+        console.log(result.user);
+    
+        await updateUser(name, photoUrl);
+    
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your account created successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+    
+        navigate('/');
+      } catch (error) {
+        if (error) {
           Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Your account create successfully",
-            showConfirmButton: false,
-            timer: 1500,
+            icon: "error",
+            text: "Already exist email/something wrong",
           });
-            navigate('/');
-        })
-        .catch((err)=>{
-          if(err){
-            Swal.fire({
-              icon: "error",
-              text: "Already exist email/ something wrong",
-            });
-          }
-        })
-    })
-  };
-  const hangleGoogleLogin = () =>{
-    googleLogin()
-    .then(result=>{
-      if(result.user){
-        navigate('/')
+        }
       }
-    })
-  }
+    }
+   
+  };
+  
+  
   return (
     <div className="hero min-h-screen bg-base-200 my-3 rounded-md">
       <div className="hero-content flex-col lg:flex-row">
@@ -115,12 +120,7 @@ const Register = () => {
                 Register
               </button>
             </div>
-            <p className="text-center my-4"> Or login with</p>
-            <div className="flex gap-5 justify-center mb-3">
-              <button onClick={hangleGoogleLogin} className=" w-10 h-10 rounded-full bg-[#F5F5F8]">
-                <FcGoogle className="text-3xl text-[#3B5998] ml-1" />
-              </button>
-            </div>
+  
             <div className="text-sm font-medium text-gray-500 flex justify-center">
             have a already account?{" "}
               <Link
