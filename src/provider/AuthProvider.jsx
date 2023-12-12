@@ -47,33 +47,35 @@ const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     const subsCribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
       setIsLoading(false);
-      const logInUser = { email: user?.email };
+      setUser(user)
+      // const logInUser = { email: user?.email };
 
       if (user) {
         axios
           .post(
             "https://community-food-sharing-server-side.vercel.app/api/vi/jwt",
-            logInUser,
+            {email:user?.email},
             {
               withCredentials: true,
             }
           )
           .then((res) => {
             console.log(res.data);
-          });
+            setUser(user);
+          })
+         
       } else {
         axios
           .post(
             "https://community-food-sharing-server-side.vercel.app/api/vi/logOut",
-            logInUser,
             {
               withCredentials: true,
             }
           )
           .then((res) => {
             console.log(res.data);
+           
           });
       }
     });
